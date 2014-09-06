@@ -1,0 +1,41 @@
+/*- - - List styles - - -*/
+.list_backdrop {
+    width:400px;
+    height:500px;
+    overflow:scroll;
+    position:relative;
+    border-radius:10px;
+    /*border:px solid #7BB89E;*/
+}
+
+.list_title {
+    position:fixed;
+    margin:0;
+    width:390px;
+    padding:10px 0 10px 10px;
+    border-radius:5px;
+    z-index:2;
+    opacity:0.8;
+}
+
+.list_notes {
+    /*border:1px solid white;*/
+    position:relative;
+    top:40px;
+    list-style-type:none;
+    float:left;
+    margin:0;
+    margin-right:11px;
+    padding:0;
+    float:right;
+    z-index:1;
+}
+
+.note {
+    width:250px;
+    height:150px;
+    background-color:white;
+    padding:10px;
+    margin:5px;
+    margin-bottom:10px;
+}

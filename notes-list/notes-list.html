@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <title>Evernote test</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--http://code.jquery.com/jquery-latest.min.js-->
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+
+    <link type="text/css" rel="stylesheet" href="css/list_classes.css">
+    <link type="text/css" rel="stylesheet" href="css/note_list_styles.css">
+    <link type="text/css" rel="stylesheet" href="css/time_list_styles.css">
+
+    <style type="text/css">
+
+    body {
+        margin:0;
+        padding:0;
+        font-family:webfont_light, Helvetica, Arial, sans-serif;
+        /*Gotham_SSm_4r*/
+    }
+
+    #wrapper {
+
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+        <div id="notelist" class="list_backdrop">
+            <p class="list_title">Notes</p>
+
+            <ul class="list_notes">
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+                <li class="note"></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+
+    <script type="text/javascript">
+
+    $("#incr_mark").click(function() {
+        $("#markers").append("<div class='time_marker'></div>");
+
+        var numActiveDivs = $(".time_marker").filter().length;
+
+        var width = 100 / numActiveDivs;
+
+        $(".time_marker").width(width+"%");
+    });
+
+
+    </script>
+
+</body>
+</html>
