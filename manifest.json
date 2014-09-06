@@ -8,6 +8,10 @@
     	"persistent": false,
     	"scripts": ["js/jquery-2.1.1.js", "js/content.js"]
   	},
+    "permissions":[
+        "https://*.evernote.com/",
+        "http://*.wikipedia.org/"
+    ],
     "browser_action": {
     	"default_title": "",
     	"default_icon": "icon.png",
