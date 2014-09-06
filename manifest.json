@@ -1,0 +1,16 @@
+{
+    "name": "Evernote Hackathon",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description" : "Automatically defines words.",
+    "icon":{"128": "icon.png"},
+    "background": {
+    	"persistent": false,
+    	"scripts": ["js/jquery-2.1.1.js", "js/content.js"]
+  	},
+    "browser_action": {
+    	"default_title": "",
+    	"default_icon": "icon.png",
+    	"default_popup": "js/popup.html"
+  	}
+}
