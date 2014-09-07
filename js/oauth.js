@@ -1,11 +1,11 @@
-app.loginWithEvernote();
-var oauth = 
+alert("burn in hell javascript");
+var app = 
 {
 	consumerKey : 'defnote',
 	consumerSecret : '47a12a5c42f24e10',
 	evernoteHostName : 'https://sandbox.evernote.com',
 
-loginWithEvernote: function() {
+    loginWithEvernote: function() {
     options = {
         consumerKey: app.consumerKey,
         consumerSecret: app.consumerSecret,
@@ -15,9 +15,9 @@ loginWithEvernote: function() {
     oauth = OAuth(options);
     // OAuth Step 1: Get request token
     oauth.request({'method': 'GET', 'url': app.evernoteHostName + '/oauth', 'success': app.success, 'failure': app.failure});
-},
+    },
 
-success: function(data) {
+    success: function(data) {
         var isCallBackConfirmed = false;
         var token = '';
         var vars = data.text.split("&");
@@ -80,15 +80,16 @@ success: function(data) {
             var noteStore = new NoteStoreClient(noteStoreProtocol);
             noteStore.listNotebooks(authTokenEvernote, function (notebooks) {
                 console.log(notebooks);
-            }
-        },
+            },
+        
+
         function onerror(error) {
             console.log(error);
         });
- 
+        }
     },
     failure: function(error) {
         console.log('error ' + error.text);
     }
-
 }
+app.loginWithEvernote();
