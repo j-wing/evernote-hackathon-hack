@@ -10,11 +10,20 @@
   	},
     "permissions":[
         "https://*.evernote.com/",
-        "http://*.wikipedia.org/"
+        "http://*.wikipedia.org/",
+        "https://*.wikipedia.org/"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://www.evernote.com/Home.action"],
+        "js": ["js/jquery-2.1.1.js", "js/getwiki.js", "js/main.js"],
+        "css":["css/wiki.css"],
+        "run_at":"document_end"
+      }
     ],
     "browser_action": {
     	"default_title": "",
     	"default_icon": "icon.png",
-    	"default_popup": "js/popup.html"
+    	"default_popup": "popup.html"
   	}
 }
