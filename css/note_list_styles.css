@@ -1,20 +1,20 @@
 /* - - - Note List styles - - - */
-#notelist {
+#note-list {
     background-color:#8CC9AF;
 }
 
-#notelist p {
+#note-list p {
     background-color:#9DDCBF;
     color:green;
 }
 
-#notelist li:hover {
+#note-list li:hover {
     background-color:#B1EFDB;
     border:1px solid green;
     width:248px;
     height:148px;
 }
 
-#notelist li:active {
+#note-list li:active {
     background-color:#007A54;
 }
