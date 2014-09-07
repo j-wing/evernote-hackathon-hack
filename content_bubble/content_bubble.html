@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <title>Note Viewer</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--http://code.jquery.com/jquery-latest.min.js-->
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery.ellipsify.min.js"></script>
+
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+
+    <style type="text/css">
+    .bubble {
+        position: relative;
+        width:350px;
+        padding: 0px;
+        background-color:#A7E8C0;
+        border:1px solid green;
+        border-radius: 5px;
+        padding:10px;
+        color:#04461D;
+
+    }
+
+      .bubble:after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 20px;
+        border-style: solid;
+        border-width: 15px 8px 0;
+        border-color: green transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bubble">TThis is a test.</div>
+
+    <script type="text/javascript">
+    $("div").ellipsify({
+        count: 50
+    });
+
+    </script>
+
+</body>
+</html>
