@@ -1,15 +1,19 @@
-alert("this is running");
-function getWikiDescription(searchTerm)
+//alert("this is running");
+function getWikiDescription(searchTerm, callback)
 {
-    var theURL = "http://en.wikipedia.org/wiki/" + searchTerm.replace(" ", "_");
-	var article = null;
-   	$.get(theURL, function(data){
-   		wikiHelper(data);
-   	}, "html");
+	var theURL = "http://en.wikipedia.org/wiki/" + searchTerm.replace(" ", "_");
+    //window.open(theURL);
+	//var article = document.getElementsByTagName("P")[0];
+	//localStorage.setItem("lastname", "Smith");
+  var whatever = null;
+  
+
+   	$.ajax(theURL, {
+      success:function(data){
+        data = data.replace(/script/g, "");
+     		$('#wikiElem').html(data);
+      	callback($('#wikiElem p')[0].textContent.replace(/\[[0-9]\]/g, ""));
+     	},
+      dataType:"text",
+    });
 }
-function wikiHelper(data)
-{
-	alert(data);
-	console.log(data.getElementsByTagName("P")[0]);
-}
-getWikiDescription("godwin's law");
