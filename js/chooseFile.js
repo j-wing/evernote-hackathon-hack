@@ -8,26 +8,26 @@ var noteStoreProtocol = new Thrift.BinaryProtocol(noteStoreTransport);
 var noteStore = new NoteStoreClient(noteStoreProtocol);
 
 function displayNotes() {
-	alert("running");
 	if (!localStorage.evNotebookGUID) {
 		renderNotes(localStorage.evNotebookGUID);
 	}
 	else  {
-		alert("no id in ls");
 		noteStore.listNotebooks(AUTH_TOKEN, function(notebooks) {
 			localStorage.evNotebookGUID = notebooks[0].GUID;
-			alert("got the guid" + localStorage.evNotebookGUID);
 			renderNotes(localStorage.evNotebookGUID);
 		});
 	}	
 }
 
-function renderNotes(notebook) {
-	alert("rendernotes called");
-	noteStore.findNotes(AUTH_TOKEN, new NoteFilter(), 0, null, function(noteList) {
-		console.log(noteList);
+function renderNotes(notebookGUID) {
+	noteStore.findNotes(AUTH_TOKEN, new NoteFilter({notebookGUID:notebookGUID}), 0, 100, function(noteList) {
 		var source   = $("#notelist-tmpl").html();
-		var template = Handlebars.compile(source, noteList.notes);
+		var compiled = Mustache.render(source, noteList.notes);
+		$("#note-list").html(compiled);
+		$(".note").click(function(e) {
+			var id = $(this).data("note-id");
+			chrome.tabs.create({url:"https://www.evernote.com/Home.action#n="+id});
+		});
 	});
 }
 
