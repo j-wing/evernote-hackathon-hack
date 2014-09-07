@@ -1,8 +1,19 @@
 <html>
 	<head>
+		<style type="text/css">
+		#wikiElem{
+			display:none;
+			top:-1000;
+			left:-1000;
+			width:0;
+			height:0;
+		}
+		</style>
 		<script type="text/javascript" src="evernote-sdk-minified.js"></script>
 		<script type="text/javascript" src="jquery-2.1.1.js"></script>
 		<script type="text/javascript" src="handlebars.js"></script>
+		<script type="text/javascript" src="oauth.js"></script>
+
 		<script type="text/javascript" src="chooseFile.js">
 
 		</script>
@@ -10,6 +21,7 @@
 
 	</head>
 	<body>
-		<p> Hello World </p>
+		<div id="wikiElem">
+		</div>
 	</body>
 </html>
