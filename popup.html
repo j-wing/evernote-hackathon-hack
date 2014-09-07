@@ -1,28 +1,120 @@
+<!doctype html>
 <html>
-    <head>
-        <script type="text/javascript" src="js/evernote-sdk-minified.js"></script>
-        <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-        <script type="text/javascript" src="js/mustache.js"></script>
-        <script type="text/javascript" src="js/enml.js"></script>
-        <script type="text/javascript" src="js/getwiki.js"></script>
-        <script type="text/javascript" src="js/chooseFile.js"></script>
-        <link href="css/list_classes.css" type="text/css" rel="stylesheet" />
-        <link href="css/note_list_styles.css" type="text/css" rel="stylesheet" />
+<head>
+    <title>Note Viewer</title>
 
-    </head>
-    <body>
-        <script id="notelist-tmpl" type="text/x-handlebars-template">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-                <p class="list_title">Notes</p>
+    <!--http://code.jquery.com/jquery-latest.min.js-->
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/mustache.js"></script>
+    <script type="text/javascript" src="js/notecard.js"></script>
 
-                <ul class="list_notes">
-                    {{#notes}}
-                        <li class="note" data-note-id="{{guid}}">{{title}}</li>
-                    {{/notes}}
-                </ul>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>-->
 
-        </script>
-        <div id="note-list" class="list_backdrop">
+    <style type="text/css">
+
+    body {
+        margin:0;
+        padding:0;
+        font-family:webfont_light, Helvetica, Arial, sans-serif;
+        /*Gotham_SSm_4r*/
+    }
+
+    #note_viewer {
+        height:500px;
+        width:700px;
+        background-color:#249A75;
+        position:absolute;
+    }
+
+    #notes {
+        height:400px;
+        width:600px;
+        background-color:#8CC9AF;
+        position:relative;
+        margin:50px;
+        border-radius:10px;
+        position:relative;
+
+        overflow:hidden;
+    }
+
+    #note-container {
+        position:absolute;
+        left:110px;
+        width:100000px;
+    }
+
+    .note {
+        height:380px;
+        width:380px;
+        /*background-color:white;*/
+        float:left;
+        overflow:hidden;
+        margin:10px;
+        margin-right:220px;
+    }
+
+    .definition {
+        width:380px;
+        height:380px;
+        background-color:#3D846D;
+        color:white;
+        text-align:center;
+        padding-top:160px;
+        font-size:24px;
+    }
+
+    .content {
+        width:100%;
+        height:100%;
+        background-color:#DCFFF5;
+        color:green;
+        font-size:18px;
+        text-align:left;
+        padding:15px;
+        overflow:scroll;
+        box-sizing:border-box;
+    }
+
+    #notes_title {
+        padding:0;
+        margin:0;
+        color:white;
+        font-size:2em;
+        position:absolute;
+        margin:5px 0 0 10px;
+    }
+
+
+    </style>
+
+</head>
+
+<body style="width:700px;height:500px;">
+    <div id="tmpl" style="display:none">
+        {{#notes}}
+        <div class="note">
+            <div class="definition">{{term}}</div>
+            <div class="content">{{def}}</div>
         </div>
-    </body>
+        {{/notes}}
+    </div>
+
+
+    <div id="wrapper">
+        <div id="note_viewer">
+            <p id="notes_title">Note Cards</p>
+            <div id="notes">
+                <div id="note-container">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>

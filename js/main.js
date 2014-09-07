@@ -1,4 +1,21 @@
 var EvernoteEditorWatcher = EvernoteEditorWatcher || {};
+function getCaretCharacterOffsetWithin(element) {
+    var caretOffset = 0;
+    if (typeof window.getSelection != "undefined") {
+        var range = window.getSelection().getRangeAt(0);
+        var preCaretRange = range.cloneRange();
+        preCaretRange.selectNodeContents(element);
+        preCaretRange.setEnd(range.endContainer, range.endOffset);
+        caretOffset = preCaretRange.toString().length;
+    } else if (typeof document.selection != "undefined" && document.selection.type != "Control") {
+        var textRange = document.selection.createRange();
+        var preCaretTextRange = document.body.createTextRange();
+        preCaretTextRange.moveToElementText(element);
+        preCaretTextRange.setEndPoint("EndToEnd", textRange);
+        caretOffset = preCaretTextRange.text.length;
+    }
+    return caretOffset;
+}
 
 EvernoteEditorWatcher = {
 	init:function() {
@@ -14,13 +31,18 @@ EvernoteEditorWatcher = {
 		var elem = selection.focusNode.parentNode;
 		var split = elem.innerHTML.split(":");
 		var term = split[0];
+		if (!term) {
+			return;
+		}
 		console.log("the term to be defined is: ", term);
 		getWikiDescription(term, function(def) {
-			this.handleWikiDefinition(def, elem)
+			this.handleWikiDefinition(def, elem, term)
 		}.bind(this));
 	},
-	handleWikiDefinition:function(definition, elem) {
+	handleWikiDefinition:function(definition, elem, term) {
 		elem.innerHTML = elem.innerHTML + " " + definition;
+		chrome.runtime.sendMessage({term: term, def:definition}, function(response) {
+		});
 	}
 }
 

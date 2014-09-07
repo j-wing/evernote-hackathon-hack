@@ -1,5 +1,6 @@
 function getWikiDescription(searchTerm, callback) {
-	var theURL = "https://en.wikipedia.org/wiki/" + searchTerm.replace(" ", "_");  
+	var theURL = "https://en.wikipedia.org/wiki/" + searchTerm.replace(" ", "_");
+	console.log(theURL);
    	$.ajax(theURL, {
 		success:function(data){
 			data = data.replace(/script/g, "");
@@ -7,7 +8,7 @@ function getWikiDescription(searchTerm, callback) {
 			$('#wikiElem').html(data);
 			var paragraphs = $('#wikiElem #content #mw-content-text p');
 			var content = paragraphs[0];
-			if (content.textContent == "See also") {
+			if (content.textContent == "See also" || content.textContent.trim().startswith("Coordinates") || content.textContent.trim() == "") {
 				content = paragraphs[1];
 			}
 
@@ -18,3 +19,6 @@ function getWikiDescription(searchTerm, callback) {
     });
 }
 
+String.prototype.startswith = function(s) {
+	return (this.slice((s.length)) == s);
+}
