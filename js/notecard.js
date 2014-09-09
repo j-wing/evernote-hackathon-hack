@@ -5,6 +5,11 @@ window.onload = function() {
     console.log($("#note-container"))
     $("#note-container").html(rendered);
 
+    $("#clear").click(function() {
+        window.localStorage.setItem('oldTerms', window.localStorage['terms'])
+        window.localStorage.setItem('terms', "[]")
+    })
+
     document.addEventListener("keydown", function(event) {
         var note_container = $("#note-container");
         var left_amt = +(note_container.css("left").slice(0, note_container.css("left").length-2));
