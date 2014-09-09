@@ -19,7 +19,6 @@ function getCaretCharacterOffsetWithin(element) {
 
 EvernoteEditorWatcher = {
 	init:function() {
-		alert("elllo");
 		this.evernoteEditor = $(".mce-container iframe")[0]
 		this.evernoteEditor.contentWindow.addEventListener("keydown", this.handleKeyDown.bind(this));
 	},
